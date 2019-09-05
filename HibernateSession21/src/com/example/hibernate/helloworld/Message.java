@@ -23,5 +23,11 @@ public class Message {
 	public void setId(int id) {
 		this.id = id;
 	}
+
+	@Override
+	public String toString() {
+		return "Message [messageText=" + messageText + ", id=" + id + "]";
+	}
+	
 	
 }

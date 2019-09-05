@@ -10,10 +10,14 @@
         <property name="hibernate.connection.password">password</property>
         <property name="hibernate.connection.pool_size">1</property>
         <property name="hibernate.show_sql">true</property>
-        <!-- <property name="hibernate.hbm2ddl.auto">create</property> -->
+       <!-- <property name="hibernate.hbm2ddl.auto">create</property>  -->
        
-        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</property>
+        <mapping class="com.example.hibernate.helloworld.MessageNew"/>
+        <mapping class="com.example.hibernate.employee.Employee"/>
+         <mapping class="com.example.hibernate.employee.Account"/>
+        
 
-        <mapping resource="message.hbm.xml"/>
+       
     </session-factory>
 </hibernate-configuration>

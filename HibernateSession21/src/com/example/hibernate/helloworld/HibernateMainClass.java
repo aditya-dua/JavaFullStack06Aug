@@ -1,5 +1,8 @@
 package com.example.hibernate.helloworld;
 
+import java.io.File;
+import java.util.List;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -24,18 +27,44 @@ public class HibernateMainClass {
 		// TODO Auto-generated method stub
 		
 		factory = new Configuration().configure().buildSessionFactory();
+		
 		Message message  = new Message();
 		message.setMessageText("Hello World!");
+		readData();
+		
 		Session session =factory.openSession();
 		 //factory.getCurrentSession();
 		
-		Transaction tnx = session.beginTransaction();
-		Integer idInserted= (Integer)session.save(message);
+		
+		MessageNew msgNew = new MessageNew();
+		msgNew.setMessageText("Annotized Hello World!");
+		//Transaction tnx = session.beginTransaction();
+		Integer idInserted= (Integer)session.save(msgNew);
+		//msgNew.setMessageText("IT IS NEW");
+		message  = new Message();
+		message.setMessageText("Hello World!123456789");
 		System.out.println("ID inserted is:"+idInserted);
-		tnx.commit();
+		 idInserted= (Integer)session.save(msgNew);
+		System.out.println("ID inserted is:"+idInserted);
+
+		//tnx.commit();
+		session.close();	
+	}
+	
+	public static void readData(){
+		
+		Session session = factory.openSession();
+		Transaction tx=null;
+		
+		List messageList = session.createQuery("From MessageNew").list();
+		
+		for (Object object : messageList) {
+			MessageNew msg = (MessageNew) object;
+			
+			System.out.println(msg);
+		}
+		
 		session.close();
-		
-		
 	}
 
 }
