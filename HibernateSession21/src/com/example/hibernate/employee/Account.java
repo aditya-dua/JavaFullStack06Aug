@@ -50,7 +50,7 @@ public class Account {
 	@Override
 	public String toString() {
 		return "Account [id=" + id + ", name=" + name + ", employee="
-				+ employee + "]";
+				+ employee.getId() + "]";
 	}
 
 	public Account() {

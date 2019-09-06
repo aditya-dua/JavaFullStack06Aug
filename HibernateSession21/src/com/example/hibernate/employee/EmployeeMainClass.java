@@ -17,22 +17,24 @@ public class EmployeeMainClass {
 		factory = new Configuration().configure().buildSessionFactory();
 		
 		Employee e = new Employee();
+		e.setName("ASDFGHJJKL");
+		e.setSalary("2323");
+		e.setPhone("12121212112");
 		Account acc=new Account();
 		acc.setName("ACCOUNT-1");
 		Account acc1=new Account();
 		acc1.setName("ACCOUNT-2");
+		acc1.setEmployee(e);
 		HashSet<Account> hs= new HashSet<Account>();
 		hs.add(acc);
 		hs.add(acc1);
-		e.setName("ASDFGHJJKL");
-		e.setSalary("2323");
-		e.setPhone("12121212112");
+	
 		e.setAccounts(hs);
 		Session session =factory.openSession();
 		
 		addEmployee(session,e);
-		System.out.println("Employee fetched is:"+fetchEmployee(session, 1));
-		System.out.println("Employee fetched is:"+fetchEmployee(session, 2));
+		//System.out.println("Employee fetched is:"+fetchEmployee(session, 1));
+		System.out.println("Employee fetched is:"+fetchEmployee(session, 6));
 		//System.out.println("Employee id inserted is::"+addEmployee(session, e));
 		//updateEmployee(session,258,"Aditya");
 		//deleteEmployee(session,258);
