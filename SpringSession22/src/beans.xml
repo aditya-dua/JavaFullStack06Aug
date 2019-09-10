@@ -1,0 +1,47 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+
+
+
+	<bean id="helloWorld" class="com.example.dependency.injection.Employee">
+		<constructor-arg value="10" type="int"></constructor-arg>
+		<constructor-arg value="ADITYA" type="String"></constructor-arg>
+		<constructor-arg>
+			<map>
+				<entry key="PRIMARY_ADDRESS" value-ref="address" />
+				<entry key="HOME_ADDRESS" value-ref="address_home" />
+				<entry key="OFFICE_ADDRESS" value-ref="address_offc" />
+				<entry key="PRIMARY_ADDRESS_2" value-ref="address" />
+
+			</map>
+		</constructor-arg>
+		<constructor-arg>
+			<list>
+				<value>+91-1234567890</value>
+				<value>+91-3453456354</value>
+				<value>+91-464566546456</value>
+				<value>+91-456456456</value>
+				<value>+91-456455645</value>
+			</list>
+		</constructor-arg>
+	</bean>
+	<bean id="address" class="com.example.dependency.injection.Address">
+		<property name="city" value="DELHI"></property>
+		<property name="houseNumber" value="1"></property>
+	</bean>
+	<bean id="address_home" class="com.example.dependency.injection.Address">
+		<property name="city" value="HOME"></property>
+		<property name="houseNumber" value="1"></property>
+	</bean>
+	<bean id="address_offc" class="com.example.dependency.injection.Address">
+		<property name="city" value="OFFC"></property>
+		<property name="houseNumber" value="1"></property>
+	</bean>
+
+
+</beans>
